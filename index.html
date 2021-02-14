@@ -26,6 +26,7 @@
         </h3>
 			  <p id="incomeDisplay">R$ 0,00</p>
       </div>
+
       <div class="card">
         <h3>
           <span>Saídas</span>
@@ -33,9 +34,10 @@
         </h3>
 			  <p id="expenseDisplay">R$ 0,00</p>
       </div>
+
       <div class="card total">
         <h3>
-          <span>Total</span>
+          <span>Saldo Atual</span>
           <img src="./assets/total.svg" alt="Imagem do Total">
         </h3>
 			  <p id="totalDisplay">R$ 0,00</p>
@@ -45,8 +47,11 @@
 		<section id="transactions">
       <h2 class="sr-only">Transações</h2>
       
-      <a href="#" class="button new" onclick="Modal.open()">+ Nova Transação</a>
-
+      <div class="transaction-mode">
+        <a href="#" class="new-income">+ Nova Receita</a>
+        <a href="#" class="new-expense">+ Nova Despesa</a>
+      </div>
+    
 			<table id="transactions-history">
 				<thead>
 					<tr>
@@ -68,7 +73,7 @@
   <div class="modal-overlay">
     <div class="modal">
       <div id="form">
-        <h2>Nova Transação</h2>
+        <h2 id="modal-title"></h2>
         <form action="" onsubmit="Form.submit(event)">
 
           <div class="input-group">
@@ -89,8 +94,8 @@
               id="amount" 
               placeholder="0,00"
               step="0.01"
+              min="0"
             >
-            <small class="help">Use o sinal negativo (-) para despesas e vírgula (,) para casas decimais</small>
           </div>
   
           <div class="input-group">

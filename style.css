@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400&display=swap');*/
 
 :root {
   --dark-blue: #363F5F;
   --green: #49AA26;
   --light-green:  #3DD705;
   --red: #E92929;
+  --light-red: #e96b6b;
 }
 
 * {
@@ -50,13 +51,31 @@ h2 {
 }
 
 /**** Links & Buttons ****/
+#transactions .actions {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
 a {
-  color: var(--green);
   text-decoration: none;
 }
 
-a:hover {
+a.new-income {
+  color: var(--green);
+  margin-right: 1rem;
+}
+
+a.new-income:hover {
   color: var(--light-green);
+}
+
+a.new-expense {
+  color: var(--red);
+}
+
+a.new-expense:hover {
+  color: var(--light-red);
 }
 
 button {
@@ -74,11 +93,6 @@ button:hover {
   background: var(--light-green);
 }
 
-.button.new {
-  display: inline-block;
-  margin-bottom: .8rem;
-}
-
 .button.cancel {
   color: var(--red);
   border: 2px var(--red) solid;
@@ -93,6 +107,10 @@ button:hover {
 
 .button.cancel:hover {
   opacity: 1;
+}
+
+#remove-button {
+  cursor: pointer;
 }
 
 /**** Header ****/
@@ -230,15 +248,31 @@ table tbody tr td:last-child {
 .modal {
   background: #F0F2F5;
   padding: 2.4rem;
+  width: 80vw;
+  max-width: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal h2 {
+  margin-top: 0;
+  text-align: center;
 }
 
 /**** Form ****/
 #form {
-  max-width: 500px;
+  width: 100%;
 }
 
-#form h2 {
-  margin-top: 0;
+#form .input-group:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  margin: auto;
 }
 
 input {
@@ -251,10 +285,6 @@ input {
 
 .input-group {
   margin-top: 0.8rem;
-}
-
-.input-group small {
-  opacity: 0.5;
 }
 
 .input-group.actions {

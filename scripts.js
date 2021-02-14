@@ -1,8 +1,19 @@
-// Toogle the MODAL
-const modal = document.querySelector(".modal-overlay");
+let transactionType = "";
+document.querySelector(".new-income").onclick = () => {
+  transactionType = "income";
+  Modal.open();
+};
 
+document.querySelector(".new-expense").onclick = () => {
+  transactionType = "expense";
+  Modal.open();
+};
+
+const modal = document.querySelector(".modal-overlay");
 const Modal = {
+  title: document.querySelector("#modal-title"),
   open() {
+    this.title.innerHTML = (transactionType === "income") ? "Nova Receita" : "Nova Despesa";
     modal.classList.add("active");
   },
 
@@ -39,7 +50,7 @@ const Transaction = {
   getIncomes() {
     let incomes = 0;
     this.all.forEach(transaction => {
-      if (transaction.amount > 0) {
+      if (transaction.type === "income") {
         incomes += transaction.amount;
       }
     });
@@ -49,7 +60,7 @@ const Transaction = {
   getExpenses() {
     let expenses = 0;
     this.all.forEach(transaction => {
-      if (transaction.amount < 0) {
+      if (transaction.type === "expense") {
         expenses += transaction.amount;
       }
     });
@@ -57,7 +68,7 @@ const Transaction = {
   },
 
   getTotal() {
-    return this.getIncomes() + this.getExpenses();
+    return this.getIncomes() - this.getExpenses();
   }
 };
 
@@ -73,15 +84,14 @@ const Display = {
   },
 
   buildTransactionRow(transaction, index) {
-    const smartClass = transaction.amount > 0 ? "income" : "expense";
     const amount = Utils.formatCurrency(transaction.amount);
 
     const block = `
       <td class="description">${transaction.description}</td>
-      <td class=${smartClass}>${amount}</td>
+      <td class=${transaction.type}>${amount}</td>
       <td class="date">${transaction.date}</td>
       <td>
-        <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover Transação">
+        <img id="remove-button" onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover Transação">
       </td>`;
 
     return block;
@@ -130,6 +140,7 @@ const Form = {
 
   getValues() {
     return {
+      type: transactionType,
       description: this.description.value,
       amount: this.amount.value,
       date: this.date.value
@@ -145,12 +156,13 @@ const Form = {
   },
 
   getFormattedValues() {
-    let { description, amount, date } = this.getValues();
+    let { type, description, amount, date } = this.getValues();
 
     date = Utils.formatDate(date);
     amount = Number(amount);
     
     return {
+      type,
       description,
       amount,
       date
