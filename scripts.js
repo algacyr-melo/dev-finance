@@ -1,26 +1,22 @@
 let transactionType = "";
 document.querySelector(".new-income").onclick = () => {
   transactionType = "income";
-  Modal.open();
+  Modal.toggle();
 };
 
 document.querySelector(".new-expense").onclick = () => {
   transactionType = "expense";
-  Modal.open();
+  Modal.toggle();
 };
 
 const modal = document.querySelector(".modal-overlay");
 const Modal = {
   title: document.querySelector("#modal-title"),
-  open() {
+  
+  toggle() {
     this.title.innerHTML = (transactionType === "income") ? "Nova Receita" : "Nova Despesa";
-    modal.classList.add("active");
-  },
-
-  close() {
-    modal.classList.remove("active");
+    modal.classList.toggle("active");
   }
-  // TO DO: Create a unique method called toogle
 };
 
 // Setup a LOCAL STORAGE
