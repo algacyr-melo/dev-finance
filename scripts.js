@@ -12,7 +12,7 @@ document.querySelector(".new-expense").onclick = () => {
 const modal = document.querySelector(".modal-overlay");
 const Modal = {
   title: document.querySelector("#modal-title"),
-  
+
   toggle() {
     this.title.innerHTML = (transactionType === "income") ? "Nova Receita" : "Nova Despesa";
     modal.classList.toggle("active");
@@ -182,7 +182,7 @@ const Form = {
       Transaction.add(transaction);
 
       this.clearFields();
-      Modal.close();
+      Modal.toggle();
     }
     catch (error) {
       alert(error.message);
