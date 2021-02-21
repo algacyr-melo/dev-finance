@@ -142,7 +142,7 @@ header {
 
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
-  border-radius: 0.25rem; 
+  border-radius: 0.25rem;
 }
 
 .card h3 {
@@ -157,7 +157,7 @@ header {
 .card p {
   font-size: 1.8rem;
   line-height: 3rem;
-  margin-top: 1rem
+  margin-top: 1rem;
 }
 
 .card.total {
@@ -198,6 +198,7 @@ table th {
 table td {
   background: #FFF;
   padding: 1rem 2rem;
+  white-space: nowrap;
 }
 
 td.description {
