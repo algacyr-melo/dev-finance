@@ -1,2 +1,2 @@
 # dev_finance
-A finance web application by Rocketseat at "maratona discover" course.
+A financial web app created by Rocketseat and developed during Discover marathon.
