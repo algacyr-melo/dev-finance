@@ -1,6 +1,9 @@
 # Dev Finance
 This front-end app allows the users to manage their expenses and earnings with a simple interface
-![](./assets/layout.png)
+
+## Preview
+![Home](./assets/layout-00.png)
+![Modal](./assets/layout-01.png)
 
 ## Installation
 *Download ZIP:*
